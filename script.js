@@ -1,4 +1,3 @@
-// @ts-nocheck
 const API_URL = "https://api.jikan.moe/v4/";
 
 const animesList = document.getElementById("animes-list");
@@ -17,7 +16,7 @@ async function generateAnimeTop(endpoint) {
         const topAnime = await response.json();
         console.log(topAnime)
         topAnime.data.forEach(anime => {
-            const animeCard = document.createElement("div");
+            const animeCard = document.createElement("article");
             animeCard.classList.add("anime-card");
             
             const animeUrl = document.createElement("a");
@@ -47,14 +46,18 @@ async function generateAnimeTop(endpoint) {
             enTitle.classList.add("en-title");
             animeMeta.appendChild(enTitle);
             
-            const animeGenres = document.createElement("div");
+            const animeGenres = document.createElement("ul");
             animeGenres.classList.add("anime-genres")
             animeInfo.appendChild(animeGenres);
 
             anime.genres.forEach(genre =>{ 
-                const animeGenre = document.createElement("p");
+                const animeGenre = document.createElement("li");
                 animeGenre.textContent = genre.name;
                 animeGenres.appendChild(animeGenre);
+            
+            const animeEpisode = document.createElement("p")
+            anime
+
             }   
             )
             animeUrl.appendChild(animeCard);
