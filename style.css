@@ -84,6 +84,7 @@ main {
     padding: 2rem;
     margin: 0 auto;
     width: 100%;
+    max-width: 1400px;
 }
 
 #home-page main {
@@ -117,6 +118,7 @@ main {
 
 .news-presentation-image, .anime-card {
     max-width: 100%;
+    width: 500px;
     height: auto;
     margin-block: 2.5rem;
     box-shadow: var(--shadow-soft);
@@ -176,17 +178,29 @@ main {
 }
 
 .anime-card {
-    width: 600px;
+    width: 100%; 
     display: flex;
-    gap: 1rem;
-    
+    flex-direction: row; 
+    background-color: var(--color-bg-card); 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    height: 250px;
 }
 
 #animes-list {
     display: flex;
-    gap: 2rem;
-    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
     flex-wrap: wrap;
+}
+
+#animes-list > a {
+    flex: 1 1 450px; 
+    max-width: 600px;
+    min-width: 300px; 
+    display: flex; 
 }
 
 a{
@@ -199,7 +213,10 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
 }
 
  .anime-genres{
@@ -210,14 +227,29 @@ a{
     list-style-type: none;
  }
 
+ .anime-episodes{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    list-style-type: none;
+ }
+
+
 .anime-genres li{
     color: white;
+    margin-top: auto;
     background-color: var(--color-indigo);
     padding: 0.5rem;
     border-radius: 5px;
     opacity: 0.8;
 }
 
+.anime-image {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
 
 footer {
     text-align: center;
@@ -226,24 +258,168 @@ footer {
     opacity: 0.6;
 }
 
-@media (max-width: 650px) {
+
+#random-result {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+
+    width: 95%;
+    max-width: 900px; 
+
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+}
+
+#random-result img {
+    max-width: 300px; 
+    max-height: 450px;
+    border-radius: var(--radius);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#random-result .anime-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 0.8rem;
+    flex: 1;
+}
+
+#random-result h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--color-blue), var(--color-indigo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+#random-result p {
+    margin: 0.2rem 0;
+    line-height: 1.4;
+}
+
+#random-result .anime-genres {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+#random-result .anime-genres p {
+    background-color: var(--color-indigo);
+    color: var(--color-white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+}
+
+#random-result a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    background: var(--color-blue);
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column; 
+        gap: 1rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        padding: 0.5rem 1rem; 
+        font-size: 0.9rem;
+    }
+
+    #home-page main {
+        padding: 1rem;
+    }
+
+    .news-presentation h1 {
+        font-size: 2.2rem; 
+    }
+
+    .news-presentation p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    #animes-list > a {
+        flex-basis: 100%;
+        max-width: 450px; 
+    }
+    
     .anime-card {
-        width: 370px;
-        flex-direction: column;
+        flex-direction: column; 
+        height: auto; 
     }
 
-    .anime-info {
-        flex-direction: row;
+    .card-img-container {
+        width: 100%;          
+        height: 250px; 
+    }
+        
+    .jp-title {
+        white-space: normal;
     }
 
-    .anime-image {
+
+    #random-result {
+        flex-direction: column; 
+        padding: 1.5rem;
+        align-items: center;
+        text-align: center;    
+    }
+
+    #random-result img {
         max-width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
     }
 
-    main {
-        padding: 1.30rem;
+    #random-result .anime-info {
+        align-items: center; 
     }
 
+    #random-result .anime-genres {
+        justify-content: center; 
     }
-    header { flex-direction: column; gap: 1rem; }
-    .news-presentation h1 { font-size: 2.5rem; }
+} 
+
+
+@media (max-width: 400px) {
+    .news-presentation h1 {
+        font-size: 1.8rem;
+    }
+    
+    .anime-card {
+        max-width: 100%; 
+    }
+
+    .card-img-container {
+        height: 200px;  
+    }
+}
