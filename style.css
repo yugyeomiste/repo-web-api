@@ -333,6 +333,12 @@ footer {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
+.reload-container {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 2rem;    
+    width: 100%;
+}
 
 @media (max-width: 768px) {
 

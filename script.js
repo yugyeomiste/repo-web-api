@@ -166,5 +166,12 @@ async function randomAnime() {
 
         console.error(error);
     }
+    const reloadBtn = document.getElementById("btn-reload");
+}
+    const reloadBtn = document.getElementById("btn-reload");
+    if (reloadBtn) {
+        reloadBtn.addEventListener("click", () => {
+            randomAnime();
+        });
 }
 randomAnime();
