@@ -4,6 +4,9 @@ let endpoint = "top/anime";
 
 /**
  * @param { string } endpoint 
+ * 
+ * This function is used to generate the top 25 anime list.
+ * It takes the API route parameter as parameter and return nothing
  */
 
 //JS page top
@@ -21,6 +24,7 @@ async function generateAnimeTop(endpoint) {
             
             const animeUrl = document.createElement("a");
             animeUrl.href = anime.url;
+            animeUrl.title = "Lien vers la page MyAnimeList de l'anime " + anime.title; 
             animeUrl.target = "_blank";
             
             const imgContainer = document.createElement("div");
@@ -93,6 +97,12 @@ generateAnimeTop(endpoint);
 
 // JS page random
 
+/*
+*
+* This function is used to generate a random anime
+* It takes no parameter and returns nothing, only used to write in the DOM
+*/
+
 async function randomAnime() {
     const container = document.getElementById("random-result");
     
@@ -105,7 +115,6 @@ async function randomAnime() {
 
         const container = document.getElementById("random-result");
 
-        // Nettoyage du conteneur
         container.innerHTML = "";
 
         const img = document.createElement("img");
@@ -116,22 +125,18 @@ async function randomAnime() {
         const infoDiv = document.createElement("div");
         infoDiv.classList.add("anime-info");
 
-        // Titre
         const title = document.createElement("h2");
         title.textContent = anime.title;
         infoDiv.appendChild(title);
 
-        // Score
         const score = document.createElement("p");
         score.textContent = `Score : ${anime.score + " ⭐ " ?? "N/A"}`;
         infoDiv.appendChild(score);
 
-        // Épisodes
         const episodes = document.createElement("p");
         episodes.textContent = `Episodes : ${anime.episodes ?? "?"}`;
         infoDiv.appendChild(episodes);
 
-        // Genres
         if (anime.genres && anime.genres.length > 0) {
             const genresDiv = document.createElement("div");
             genresDiv.classList.add("anime-genres");
@@ -143,20 +148,19 @@ async function randomAnime() {
             infoDiv.appendChild(genresDiv);
         }
 
-        // Synopsis
         const synopsis = document.createElement("p");
         synopsis.textContent = anime.synopsis ?? "Pas de synopsis disponible.";
         infoDiv.appendChild(synopsis);
 
-        // Lien MyAnimeList
         const link = document.createElement("a");
         link.href = anime.url;
         link.target = "_blank";
         link.textContent = "Voir sur MyAnimeList";
+        link.title = "Lien vers la page MyAnimeList de l'anime " + anime.title; 
         infoDiv.appendChild(link);
 
-        // Ajout de la div info au conteneur
         container.appendChild(infoDiv);
+
     } catch(error) {
         container.innerHTML = "";
 
