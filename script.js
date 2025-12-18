@@ -8,6 +8,9 @@ let endpoint = "top/anime";
 
 //JS page top
 async function generateAnimeTop(endpoint) { 
+    const animesList = document.getElementById("animes-list");
+    if (!animesList) return;
+
     try {
         const response = await fetch(API_URL + endpoint);
         if (!response.ok) {
@@ -16,20 +19,21 @@ async function generateAnimeTop(endpoint) {
         const topAnime = await response.json();
         console.log(topAnime)
         topAnime.data.forEach(anime => {
-            const animeCard = document.createElement("article");
-            animeCard.classList.add("anime-card");
             
             const animeUrl = document.createElement("a");
             animeUrl.href = anime.url;
             animeUrl.target = "_blank";
             
+            const animeCard = document.createElement("article");
+            animeCard.classList.add("anime-card");
+
             const imgContainer = document.createElement("div");
             imgContainer.classList.add("card-img-container");
 
             const animeImg = document.createElement("img");
             animeImg.classList.add("anime-image");
             animeImg.src = anime.images.jpg.image_url;
-            animeImg.alt = "";
+            animeImg.alt = "${anime.title}";
             imgContainer.appendChild(animeImg);
             animeCard.appendChild(imgContainer);
 
@@ -49,12 +53,12 @@ async function generateAnimeTop(endpoint) {
             animeMeta.appendChild(animeDate)
 
             
-            const jpTitle = document.createElement("h1");
+            const jpTitle = document.createElement("h2");
             jpTitle.textContent = anime.title_japanese;
             jpTitle.classList.add("jp-title");
             animeMeta.appendChild(jpTitle);
             
-            const enTitle = document.createElement("h2");
+            const enTitle = document.createElement("h3");
             enTitle.textContent = anime.title_english;
             enTitle.classList.add("en-title");
             animeMeta.appendChild(enTitle);
@@ -95,6 +99,7 @@ generateAnimeTop(endpoint);
 
 async function randomAnime() {
     const container = document.getElementById("random-result");
+    if (!container) return;
     
     try {
         const response = await fetch(API_URL + "random/anime?sfw");
