@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;800&display=swap');
 
+/* VARIABLES */
 :root {
     --color-blue: #3b66e0;
     --color-mint: #64e5b3;
@@ -26,6 +27,7 @@ body {
     min-height: 100vh;
 }
 
+/* HEADER & NAV */
 header {
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
@@ -79,6 +81,7 @@ nav a:hover, nav a.active {
     box-shadow: 0 4px 15px rgba(59, 102, 224, 0.3);
 }
 
+/* MAIN/FOOTER */
 main {
     flex: 1;
     padding: 2rem;
@@ -87,51 +90,19 @@ main {
     max-width: 1400px;
 }
 
-#home-page main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+footer {
     text-align: center;
-    min-height: 80vh;
+    padding: 2rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
 }
 
-.news-presentation h1 {
-    font-family: var(--font-main);
-    font-weight: 800;
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--color-blue), var(--color-indigo));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+a {
+    color:var(--color-indigo);
+    text-decoration: none;
 }
 
-.news-presentation p {
-    font-size: 1.2rem;
-    opacity: 0.8;
-    margin-bottom: 0.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.news-presentation-image, .anime-card {
-    max-width: 100%;
-    width: 500px;
-    height: auto;
-    margin-block: 2.5rem;
-    box-shadow: var(--shadow-soft);
-    transition: transform 0.3s ease;
-    object-fit: cover; 
-}
-
-.news-presentation-image:hover,
-.anime-card:hover {
-    transform: scale(1.02);
-    box-shadow: var(--shadow-hover);
-}
-
+/* BOUTONS */
 .cta-btn {
     display: flex;
     justify-content: center;
@@ -173,22 +144,53 @@ main {
     color: white;
     transform: translateY(-3px);
 }
-.jp-title{
-    font-size: 15px;
-}
 
-.anime-card {
-    width: 100%; 
+/* INDEX */
+#home-page main {
     display: flex;
-    flex-direction: row; 
-    background-color: var(--color-bg-card); 
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
-    height: 250px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 80vh;
 }
 
+.news-presentation h1 {
+    font-family: var(--font-main);
+    font-weight: 800;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--color-blue), var(--color-indigo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.news-presentation p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 0.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.news-presentation-image {
+    max-width: 100%;
+    width: 500px;
+    height: auto;
+    margin-block: 2.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease;
+    object-fit: cover; 
+}
+
+.news-presentation-image:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+/* TOP */
 #animes-list {
     display: flex;
     gap: 1.5rem;
@@ -203,13 +205,31 @@ main {
     display: flex; 
 }
 
-a{
-    color:var(--color-indigo);
-    text-decoration: none;
-
+.anime-card {
+    width: 100%; 
+    display: flex;
+    flex-direction: row; 
+    background-color: var(--color-bg-card); 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    height: 250px;
+    margin-block: 0; 
 }
 
-.anime-info{
+.anime-card:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.anime-image {
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+}
+
+.anime-info {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -219,24 +239,19 @@ a{
     overflow: hidden;
 }
 
- .anime-genres{
+.jp-title {
+    font-size: 15px;
+}
+
+.anime-genres, .anime-episodes {
     display: flex;
     flex-direction: row;
     gap: 1rem;
     flex-wrap: wrap;
     list-style-type: none;
- }
+}
 
- .anime-episodes{
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    flex-wrap: wrap;
-    list-style-type: none;
- }
-
-
-.anime-genres li{
+.anime-genres li {
     color: white;
     margin-top: auto;
     background-color: var(--color-indigo);
@@ -245,20 +260,7 @@ a{
     opacity: 0.8;
 }
 
-.anime-image {
-    width: 100%;
-    height: 100%;
-    object-fit: scale-down;
-}
-
-footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.85rem;
-    opacity: 0.6;
-}
-
-
+/* RANDOM */
 #random-result {
     display: flex;
     flex-direction: row; 
@@ -340,8 +342,7 @@ footer {
     width: 100%;
 }
 
-
-
+/* RESPONSIV */
 @media (max-width: 768px) {
 
     header {
@@ -416,7 +417,6 @@ footer {
         justify-content: center; 
     }
 } 
-
 
 @media (max-width: 400px) {
     .news-presentation h1 {
